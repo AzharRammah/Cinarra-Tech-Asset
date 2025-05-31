@@ -4,7 +4,7 @@
 
 This project is a simple Python-based HTTP server that exposes a `GET` endpoint on port **8080** and returns a `Hello World` message.
 
-## 📁 Project Structure
+##  Project Structure
 
 ├── app/
 │ └── main.py # HTTP server source code
@@ -12,19 +12,19 @@ This project is a simple Python-based HTTP server that exposes a `GET` endpoint 
 └── start.sh # Startup script for the application
 
 
-## 🚀 Features
+##  Features
 
 - Starts an HTTP server on port 8080.
 - Returns `"Hello World"` on `GET` requests.
 - Startup script checks if port 8080 is available before launching.
 - All stdout/stderr logs are redirected to `logs/app.log`.
 
-## 🛠 Requirements
+##  Requirements
 
 - Python 3.x
 - Unix-like OS (for `lsof` in `start.sh`)
 
-## ⚙️ Installation
+##  Installation
 
 1. Clone the repository:
 
