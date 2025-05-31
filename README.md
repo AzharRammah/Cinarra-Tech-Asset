@@ -72,3 +72,61 @@ You should see:
 ```bash
 Hello World
 ```
+
+# STEP 2
+
+# Docker + Docker Compose Setup
+
+This step adds containerization to the project using Docker and Docker Compose. The app runs inside a Docker container, exposing port 8080, and connects to a PostgreSQL database container.
+
+## Files added
+
+- `Dockerfile`: Defines the Docker image for the Python app.
+- `docker-compose.yml`: Defines the services (`web` and `db`) and volumes
+
+## Dockerfile
+
+- Builds an image that runs the app on port 8080.
+- Uses Python 3.13-slim as the base image.
+- Copies the app source and startup script.
+- Sets executable permissions for `start.sh`.
+- Uses `start.sh` to launch the app.
+
+## docker-compose.yml
+
+- `web` service: builds and runs the app container.
+- `db` service: runs PostgreSQL (latest version).
+- Volumes are used for data persistence:
+  - `./logs` mapped to `/app/logs` for app logs.
+  - `db_data` volume mapped to PostgreSQL data directory.
+- Port 8080 exposed from `web` service to the host.
+
+## Environment Variables
+
+- Use a `.env` file or set environment variables:
+  - `POSTGRES_USER`
+  - `POSTGRES_PASSWORD`
+  - `POSTGRES_DB`
+
+## How to run
+
+Build and start the containers:
+
+```bash
+docker-compose up -d --build
+```
+
+## Data Persistence
+
+- Database data is persisted in the Docker volume `db_data.`
+- Application logs are persisted on your host machine in the `logs/` directory.
+
+## Cleaning up
+
+To stop and remove containers, networks, and volumes created by Docker Compose:
+
+```bash
+docker-compose down -v
+```
+
+Removing containers will delete the database data unless volumes are preserved.
