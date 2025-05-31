@@ -11,8 +11,6 @@ fi
 # Create logs directory if it doesn't exist
 mkdir -p logs
 
-# Init de app & redirects stoud to logs/app.log
 echo "Starting app in port $PORT..."
-python3 app/main.py >> logs/app.log 2>&1 &
-echo "App Started."
+exec python3 app/main.py > logs/app.log 2>&1 &
 
