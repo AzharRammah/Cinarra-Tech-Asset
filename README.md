@@ -130,3 +130,38 @@ docker-compose down -v
 ```
 
 Removing containers will delete the database data unless volumes are preserved.
+
+# STEP 3
+
+## CI/CD Workflow
+
+This project includes a basic Continuous Integration (CI) pipeline using GitHub Actions to:
+
+1. **Install dependencies** 
+
+   Runs `pip install -r requirements.txt` to install required Python packages.
+
+2. **Run basic tests** 
+
+   Checks that the application responds correctly by curling `localhost:8080`.
+
+3. **Start the app in the background** 
+
+   Launches the server so the tests can interact with it.
+
+4. **Stop the app**  
+
+   Cleans up by stopping the application after tests complete.
+
+### How to add a real production deployment
+
+To extend this workflow with automatic production deployment, you can add steps such as:
+
+- **Build and push Docker image**  
+
+  Build the Docker image with `docker build` and push it to a registry (Docker Hub, AWS ECR, GCP Container Registry, etc.).
+
+- **Deploy to production environment**  
+
+  Use tools like SSH, Ansible, Terraform, Kubernetes, AWS ECS/EKS, or any other platform to update the running service in production.
+
