@@ -25,10 +25,7 @@ jobs:
 
       - name: Build and start containers
         run: |
-          export POSTGRES_USER=$POSTGRES_USER
-          export POSTGRES_PASSWORD=$POSTGRES_PASSWORD
-          export POSTGRES_DB=$POSTGRES_DB
-          docker-compose up -d --build
+          docker compose up -d --build
 
       - name: Wait for server to start
         run: sleep 10
